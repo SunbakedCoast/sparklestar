@@ -10,12 +10,12 @@ class SignIn extends StatelessWidget {
         builder: (context, state) {
       if (state is AuthenticationUnAuthenticated) {
         print(state.toString());
-        return _SigninForm();
+        return _Form();
       }
       if (state is AuthenticationFailure) {
         print(state.toString());
 
-        return _SigninForm();
+        return _Form();
       }
       if (state is AuthenticationAuthenticated) {
         print(state.toString());
@@ -31,6 +31,17 @@ class SignIn extends StatelessWidget {
   Widget _progressIndicator() {
     return Center(
       child: CircularProgressIndicator(),
+    );
+  }
+}
+
+class _Form extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        body: _SigninForm(),
+      ),
     );
   }
 }
@@ -141,7 +152,7 @@ class _SigninFormState extends State<_SigninForm> {
                       child: RaisedButton(
                         elevation: 4.0,
                         splashColor: Colors.black,
-                        onPressed: _signinBtnPressed(),
+                        onPressed: _signinBtnPressed,
                         color: Theme.of(context).accentColor,
                         child: Text(
                           'Log in',

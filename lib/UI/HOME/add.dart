@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sparklestar/BLOCS/add_bloc/add.dart';
 import 'package:sparklestar/SRC/MODELS/models.dart';
+import 'package:sparklestar/pages.dart';
 
 class Add extends StatefulWidget {
   _AddState createState() => _AddState();
@@ -40,11 +41,11 @@ class _AddState extends State<Add> {
     }
 
     _addBtnPressed(){
-      _addBloc.add(AddBtnPressed(item: Item(image: _image.toString(),
+      _addBloc.add(AddBtnPressed(item: Item(image: '1',
       title: _titleTextController.text,
       price: int.parse(_priceTextController.text),
       description: _descriptionTextController.text,
-      location: _pickedLocation.toString())));
+      location: '_pickedLocation.toString()')));
     }
 
     return BlocBuilder<AddBloc, AddState>(builder: (context, state) {
@@ -52,7 +53,8 @@ class _AddState extends State<Add> {
         return _showProgressIndicator();
       }
       if(state is AddBtnStateDone){
-        Navigator.pop(context);
+        print(state.toString());
+        return Home();
       }
       if (state is AddInitialState) {
         return SafeArea(
@@ -111,7 +113,7 @@ class _AddState extends State<Add> {
                           keyboardType: TextInputType.name,
                           controller: _titleTextController,
                           style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: Colors.black, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
                             hintText: 'Title',
                             hintStyle: GoogleFonts.poppins(
@@ -134,7 +136,7 @@ class _AddState extends State<Add> {
                           keyboardType: TextInputType.name,
                           controller: _priceTextController,
                           style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: Colors.black, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
                             hintText: 'Price',
                             hintStyle: GoogleFonts.poppins(
@@ -156,7 +158,7 @@ class _AddState extends State<Add> {
                           //autocorrect: false,
                           keyboardType: TextInputType.name,
                           controller: _descriptionTextController,
-                          style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
                             hintText: 'Description',
                             hintStyle: GoogleFonts.poppins(

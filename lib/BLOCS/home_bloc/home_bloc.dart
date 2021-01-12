@@ -34,7 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         add(DataUpdated(items));
       });
     } catch (error){
-      yield FetchError(error: error.message ?? 'Unknown error occured');
+      yield FetchError(error: 'Unknown error occured');
     }
   } 
 

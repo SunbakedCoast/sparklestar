@@ -11,11 +11,11 @@ class SignUp extends StatelessWidget {
         builder: (context, state) {
       if (state is AuthenticationUnAuthenticated) {
         print(state.toString());
-        return _SignupForm();
+        return _Form();
       }
       if (state is AuthenticationFailure) {
         print(state.toString());
-        return _SignupForm();
+        return _Form();
       }
       if (state is AuthenticationAuthenticated) {
         print(state.toString());
@@ -30,6 +30,17 @@ class SignUp extends StatelessWidget {
   Widget _progressIndicator() {
     return Center(
       child: CircularProgressIndicator(),
+    );
+  }
+}
+
+class _Form extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return SafeArea(
+          child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        body: _SignupForm()
+      ),
     );
   }
 }
@@ -88,31 +99,15 @@ class _SignupFormState extends State<_SignupForm> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  margin: const EdgeInsets.only(left: 30),
-                  child: Text('Create account with Singular',
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22)),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(left: 30),
-                  child: Text('Hello there!',
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12)),
-                ),
-                Container(
                   margin: const EdgeInsets.only(left: 30, right: 30, top: 10),
                   child: TextFormField(
                     //autocorrect: false,
                     keyboardType: TextInputType.name,
                     controller: _nameTextController,
                     style: GoogleFonts.poppins(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                      hintText: 'Username',
+                      hintText: 'Name',
                       hintStyle: GoogleFonts.poppins(
                           color: Colors.grey, fontWeight: FontWeight.bold),
                     ),
@@ -131,7 +126,7 @@ class _SignupFormState extends State<_SignupForm> {
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailTextcontroller,
                     style: GoogleFonts.poppins(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                       hintText: 'Email',
                       hintStyle: GoogleFonts.poppins(
@@ -153,7 +148,7 @@ class _SignupFormState extends State<_SignupForm> {
                     obscureText: true,
                     controller: _passwordTextController,
                     style: GoogleFonts.poppins(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                       hintText: 'Password 6+ characters',
                       hintStyle: GoogleFonts.poppins(
@@ -176,10 +171,10 @@ class _SignupFormState extends State<_SignupForm> {
                       elevation: 4.0,
                       splashColor: Colors.white,
                       onPressed:
-                          state is SignupLoading ? () {} : _signupBtnPressed(),
+                          state is SignupLoading ? () {} : _signupBtnPressed,
                       color: Theme.of(context).accentColor,
                       child: Text(
-                        'Count me in!',
+                        'Sign up',
                         style: GoogleFonts.poppins(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),

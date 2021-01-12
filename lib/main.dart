@@ -54,16 +54,17 @@ class Sparkle extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Sparkle',
-        home: SafeArea(child:
-            BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                builder: (context, state) {
-          if (state is AuthenticationLoading)return SplashScreen();
-          if (state is AuthenticationAuthenticated) return Home();
-          if (state is AuthenticationFailure) print(state.toString());
-          if (state is AuthenticationUnAuthenticated)
-            return AuthenticationHome();
-          print('State: ${state.toString()}');
-          return Container();
-        })));
+        home: SafeArea(child: Scaffold(
+          body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+              builder: (context, state) {
+            if (state is AuthenticationLoading) return SplashScreen();
+            if (state is AuthenticationAuthenticated) return Home();
+            if (state is AuthenticationFailure) print(state.toString());
+            if (state is AuthenticationUnAuthenticated)
+              return AuthenticationHome();
+            print('State: ${state.toString()}');
+            return Container();
+          }),
+        )));
   }
 }
