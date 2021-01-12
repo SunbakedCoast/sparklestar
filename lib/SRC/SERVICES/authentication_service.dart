@@ -29,8 +29,4 @@ class FirebaseAuthenticationService extends AuthenticationService{
   Future<void> signUp(String email, String password) =>
       _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-
-  @override
-  Future<void> sendPasswordReset(String email) =>
-    _firebaseAuth.sendPasswordResetEmail(email: email);
 }

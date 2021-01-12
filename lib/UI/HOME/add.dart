@@ -7,6 +7,7 @@ import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sparklestar/BLOCS/add_bloc/add.dart';
+import 'package:sparklestar/SRC/MODELS/models.dart';
 
 class Add extends StatefulWidget {
   _AddState createState() => _AddState();
@@ -24,6 +25,7 @@ class _AddState extends State<Add> {
 
   Widget build(BuildContext context) {
     var _screenSize = MediaQuery.of(context).size;
+    var _addBloc = BlocProvider.of<AddBloc>(context);
 
     Future _fetchImage() async {
       final pickedFile = await _picker.getImage(source: ImageSource.camera);
@@ -35,6 +37,14 @@ class _AddState extends State<Add> {
           print('no image selected');
         }
       });
+    }
+
+    _addBtnPressed(){
+      _addBloc.add(AddBtnPressed(item: Item(image: _image.toString(),
+      title: _titleTextController.text,
+      price: int.parse(_priceTextController.text),
+      description: _descriptionTextController.text,
+      location: _pickedLocation.toString())));
     }
 
     return BlocBuilder<AddBloc, AddState>(builder: (context, state) {
@@ -52,7 +62,7 @@ class _AddState extends State<Add> {
                 width: _screenSize.width,
                 child: RaisedButton(
                   splashColor: Theme.of(context).accentColor,
-                  onPressed: () {},
+                  onPressed: state is AddBtnPressed ? () {} : _addBtnPressed,
                   color: Theme.of(context).accentColor,
                   child: Text('ADD',
                       style: GoogleFonts.poppins(
@@ -146,8 +156,7 @@ class _AddState extends State<Add> {
                           //autocorrect: false,
                           keyboardType: TextInputType.name,
                           controller: _descriptionTextController,
-                          style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
                             hintText: 'Description',
                             hintStyle: GoogleFonts.poppins(
@@ -195,7 +204,7 @@ class _AddState extends State<Add> {
           ),
         );
       }
-      //return
+      ///TODO [RETURN]
     });
   }
 

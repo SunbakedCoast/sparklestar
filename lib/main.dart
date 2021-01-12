@@ -30,6 +30,7 @@ void main() async {
           return AuthenticationBloc(_authService)..add(AppLoaded());
         }),
         BlocProvider<SigninBloc>(create: (context) {
+          // ignore: close_sinks
           final _authBloc = BlocProvider.of<AuthenticationBloc>(context);
           final _authService =
               RepositoryProvider.of<AuthenticationService>(context);
@@ -56,13 +57,9 @@ class Sparkle extends StatelessWidget {
         home: SafeArea(child:
             BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 builder: (context, state) {
-          if (state is AuthenticationLoading)
-
-          ///todo [return splashscreen]
+          if (state is AuthenticationLoading)return SplashScreen();
           if (state is AuthenticationAuthenticated) return Home();
-          if (state is AuthenticationFailure)
-
-          ///todo [reutrn error]
+          if (state is AuthenticationFailure) print(state.toString());
           if (state is AuthenticationUnAuthenticated)
             return AuthenticationHome();
           print('State: ${state.toString()}');

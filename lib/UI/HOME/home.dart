@@ -1,5 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sparklestar/BLOCS/home_bloc/home.dart';
+import 'package:sparklestar/SRC/REPOSITORIES/repositories.dart';
+import 'package:sparklestar/WIDGETS/widgets.dart';
 import 'package:sparklestar/pages.dart';
 
 class Home extends StatelessWidget {
@@ -27,6 +31,28 @@ class Home extends StatelessWidget {
             return Add();
           }
       ),
+      body: BlocProvider<HomeBloc>(
+        create: (context){
+          final _itemRepository = RepositoryProvider.of<ItemRepository>(context);
+          return HomeBloc(_itemRepository)..add(LoadAllData());
+        },
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state){
+            if(state is DataLoaded){
+              print('home_state is : ${state.toString()}');
+              final _items = state.item;
+              return ListView(
+                scrollDirection: Axis.vertical,
+                physics: BouncingScrollPhysics(),
+                children: [
+                  Gridview(state: state,
+                  items: _items,)
+                ],
+              );
+            }
+          }
+        )
+      )
     );
   }
 }

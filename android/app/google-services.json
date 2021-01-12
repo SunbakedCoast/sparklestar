@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "775466510752",
+    "project_id": "sparkle-301505",
+    "storage_bucket": "sparkle-301505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775466510752:android:da4ff551f803f0d3805cc5",
+        "android_client_info": {
+          "package_name": "com.example.sparkle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775466510752-ln94p26faohqfseeblso8abagfcn56d3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6BKmgb54QyEeBcVnjY7tFjGMAA4_QFqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775466510752-ln94p26faohqfseeblso8abagfcn56d3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
