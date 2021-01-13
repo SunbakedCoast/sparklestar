@@ -12,7 +12,6 @@ class ItemRepo extends ItemRepository {
   final _itemData = FirebaseFirestore.instance.collection('UserItems');
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   List<Item> item;
-
   @override
   Future<List<Item>> loadItem() async {
     final _currentUser = _firebaseAuth.currentUser;

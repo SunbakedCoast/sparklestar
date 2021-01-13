@@ -41,7 +41,7 @@ class _AddState extends State<Add> {
     }
 
     _addBtnPressed(){
-      _addBloc.add(AddBtnPressed(item: Item(image: '1',
+      _addBloc.add(AddBtnPressed(item: Item(image: _image.toString(),
       title: _titleTextController.text,
       price: int.parse(_priceTextController.text),
       description: _descriptionTextController.text,

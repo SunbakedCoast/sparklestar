@@ -6,7 +6,6 @@ import 'package:sparklestar/SRC/SERVICES/services.dart';
 import 'package:sparklestar/pages.dart';
 
 import 'BLOCS/auth_bloc/auth.dart';
-import 'BLOCS/signup_bloc.dart/signup.dart';
 import 'SRC/REPOSITORIES/repositories.dart';
 
 void main() async {
@@ -35,14 +34,6 @@ void main() async {
           final _authService =
               RepositoryProvider.of<AuthenticationService>(context);
           return SigninBloc(_authBloc, _authService);
-        }),
-        BlocProvider<SignupBloc>(create: (context) {
-          // ignore: close_sinks
-          final _authBloc = BlocProvider.of<AuthenticationBloc>(context);
-          final _authService =
-              RepositoryProvider.of<AuthenticationService>(context);
-          final _userRepository = RepositoryProvider.of<UsrRepository>(context);
-          return SignupBloc(_authBloc, _authService, _userRepository);
         }),
       ],
       child: Sparkle(),

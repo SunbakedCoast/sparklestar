@@ -18,34 +18,18 @@ class _AuthenticationHomeState extends State<AuthenticationHome>{
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-             Container(
+            SizedBox(
                 width: _screenSize.width,
                 child: RaisedButton(
                   splashColor: Theme.of(context).accentColor,
                   onPressed: () {
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => SignUp()));
-                  },
-                  color: Theme.of(context).accentColor,
-                  child: Text('Sign up',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.bold)),
-                ),
-              ),
-              Container(
-                width: _screenSize.width ,
-                //padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
+                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignIn()));
                   },
-                  child: Text(
-                    'Sign in',
-                    style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  color: Theme.of(context).accentColor,
+                  child: Text('Sign in',
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
           ],

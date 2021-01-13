@@ -28,7 +28,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> _mapLoadAllDatatoState() async* {
     yield HomeLoading();
     try {
-      _streamSubscription.cancel();
+      _streamSubscription?.cancel();
       _streamSubscription = _itemRepository.loadItem().asStream().listen((items) { 
         print('items list: $items');
         add(DataUpdated(items));

@@ -39,7 +39,7 @@ class _Form extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Colors.white,
         body: _SigninForm(),
       ),
     );
@@ -97,9 +97,9 @@ class _SigninFormState extends State<_SigninForm> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(bottom: 20),
-                    child: Text('Welcome back!',
+                    child: Text('Sign in',
                         style: GoogleFonts.poppins(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 22)),
                   ),
@@ -109,7 +109,7 @@ class _SigninFormState extends State<_SigninForm> {
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailTextcontroller,
                       style: GoogleFonts.poppins(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Colors.black, fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
                         hintText: 'Email',
                         hintStyle: GoogleFonts.poppins(
@@ -131,7 +131,7 @@ class _SigninFormState extends State<_SigninForm> {
                         controller: _passwordTextController,
                         obscureText: true,
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.black, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           hintText: 'Password',
                           hintStyle: GoogleFonts.poppins(
@@ -155,7 +155,7 @@ class _SigninFormState extends State<_SigninForm> {
                         onPressed: _signinBtnPressed,
                         color: Theme.of(context).accentColor,
                         child: Text(
-                          'Log in',
+                          'Sign in',
                           style: GoogleFonts.poppins(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
