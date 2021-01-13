@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:animations/animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sparklestar/BLOCS/home_bloc/home.dart';
 import 'package:sparklestar/SRC/MODELS/item.dart';
 import 'package:flutter/material.dart';
+import 'package:sparklestar/pages.dart';
 
 // ignore: must_be_immutable
 class Gridview extends StatelessWidget {
@@ -60,7 +63,7 @@ class Gridview extends StatelessWidget {
               width: 140,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: NetworkImage(image))),
+                      fit: BoxFit.cover, image: NetworkImage(image.toString()))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -109,7 +112,12 @@ class Gridview extends StatelessWidget {
           closedShape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           openBuilder: (_, closeContainer) {
-            ///TODO[RETURN]
+            return Specifications(
+              title: title,
+              price: price.toString(),
+              description: description,
+              location: location,
+            );
           }),
     );
   }

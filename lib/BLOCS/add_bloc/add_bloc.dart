@@ -12,14 +12,22 @@ class AddBloc extends Bloc<AddEvent, AddState> {
 
   @override
   Stream<AddState> mapEventToState(AddEvent event) async* {
-    if(event is AddBtnPressed){
+    if (event is AddBtnPressed) {
       yield* _mapAddBtnPressedtoState(event);
+    }
+    if (event is UploadImageOnBtnPressed) {
+      yield* _mapUploadImageOnBtnPressed(event);
     }
   }
 
   Stream<AddState> _mapAddBtnPressedtoState(AddBtnPressed event) async* {
     yield AddBtnStateLoading();
-    await _itemRepository.add(event.item);
+    await _itemRepository.addtoFirestore(event.item, event.image);
     yield AddBtnStateDone();
+  }
+
+  Stream<AddState> _mapUploadImageOnBtnPressed(
+      UploadImageOnBtnPressed event) async* {
+    _itemRepository.uploadPic(event.image);
   }
 }

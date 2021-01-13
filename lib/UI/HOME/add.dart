@@ -26,6 +26,7 @@ class _AddState extends State<Add> {
 
   Widget build(BuildContext context) {
     var _screenSize = MediaQuery.of(context).size;
+    // ignore: close_sinks
     var _addBloc = BlocProvider.of<AddBloc>(context);
 
     Future _fetchImage() async {
@@ -41,11 +42,12 @@ class _AddState extends State<Add> {
     }
 
     _addBtnPressed(){
-      _addBloc.add(AddBtnPressed(item: Item(image: _image.toString(),
+      _addBloc.add(AddBtnPressed(image: _image,item: Item(image: _image.toString(),
       title: _titleTextController.text,
       price: int.parse(_priceTextController.text),
       description: _descriptionTextController.text,
-      location: '_pickedLocation.toString()')));
+      location: _pickedLocation.toString())));
+      //_addBloc.add(UploadImageOnBtnPressed(image: _image));
     }
 
     return BlocBuilder<AddBloc, AddState>(builder: (context, state) {
@@ -130,9 +132,7 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Container(
-                        //margin: const EdgeInsets.only(left: 30, right: 30, top: 10),
                         child: TextFormField(
-                          //autocorrect: false,
                           keyboardType: TextInputType.name,
                           controller: _priceTextController,
                           style: GoogleFonts.poppins(
@@ -206,7 +206,7 @@ class _AddState extends State<Add> {
           ),
         );
       }
-      ///TODO [RETURN]
+      return _showProgressIndicator();
     });
   }
 

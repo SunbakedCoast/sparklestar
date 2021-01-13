@@ -7,6 +7,7 @@ import 'package:sparklestar/pages.dart';
 
 import 'BLOCS/auth_bloc/auth.dart';
 import 'SRC/REPOSITORIES/repositories.dart';
+import 'package:flutter/widgets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:sparklestar/SRC/ENTITIES/item_entity.dart';
@@ -24,6 +26,14 @@ class Item extends Equatable {
         description: entity.description,
         location: entity.location);
   }
+
+  Map<String, dynamic> toMap() => {
+    'image' : image, 
+    'title' : title, 
+    'price' : price, 
+    'description' : description, 
+    'location': location
+  };
 
   ItemEntity toEntity() {
     return ItemEntity(image, title, price, description, location);
